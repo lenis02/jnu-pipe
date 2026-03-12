@@ -5,16 +5,16 @@
     <title>Spam Checker</title>
   </head>
   <body>
-    <h1>Spam Checker</h1>
-    
+    <h1>스팸 판별기</h1>
+
     <textarea
       id="text"
       rows="5"
       cols="60"
-      placeholder="Win a FREE prize now"
+      placeholder="스팸으로 의심되는 메시지를 붙여넣어주세요!"
     ></textarea
     ><br /><br />
-    <button onclick="classify()">분류</button>
+    <button onclick="classify()">스팸 탐지</button>
     <h3 id="result"></h3>
     <script>
       function classify() {
