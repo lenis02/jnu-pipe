@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from app.spam import check_spam
+from pydantic import BaseModel
 # FastAPI 기반 웹 앱 생성
 # /docs (Swagger UI)에 표기되는 이름
 app = FastAPI(title="SpamCheck Web")
@@ -18,10 +19,12 @@ def home():
   
 # classify 요청이 올 때 할 일
 # async: 비동기 처리 (서버가 요청 기다리는 동안 다른 요청도 처리 가능
+class ClassifyRequest(BaseModel):
+  text: str
+
 @app.post("/classify")
-async def classify(request: Request):
-  payload = await request.json()
-  text = payload["text"]
+async def classify(payload: ClassifyRequest):
+  text = payload.text
   label, score = check_spam(text)
   return {
     "label": label, "score": score
