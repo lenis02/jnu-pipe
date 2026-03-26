@@ -19,6 +19,13 @@
     <script>
       function classify() {
         const text = document.getElementById('text').value;
+        // ISSUE2: empty input 처리
+        const result = document.getElementById('result');
+        if (!text) {
+          result.innerText = '메시지를 입력해 주세요!';
+          return;
+        }
+
         fetch('/classify', {
           method: 'POST',
           body: JSON.stringify({ text }),
