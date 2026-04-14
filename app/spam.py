@@ -1,7 +1,7 @@
 def check_spam(text: str) -> str:
   text = text.lower().strip()
   if text == "":
-    return "ham"
+    return "ham", 0
   
   spam_keywords = [
     "free", "win", "winner", "prize", "click",
