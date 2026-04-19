@@ -1,0 +1,26 @@
+name: Docker Verify
+on:
+  pull_request:
+  push:
+    branches: ['main']
+jobs:
+  docker-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build Docker image
+        run: docker build -t spamcheck:ci .
+      - name: Run container
+        run: |
+          docker run -d --name spamcheck_ci \
+            -e PORT=10000 \
+            -p 10000:10000 \
+            spamcheck:ci
+      - name: Check container is running
+        run: |
+          sleep 3
+          docker ps | grep spamcheck_ci
+      - name: Cleanup
+        if: always()
+        run: docker rm -f spamcheck_ci || true
