@@ -39,8 +39,6 @@ async def classify(payload: ClassifyRequest):
     # (A) 요청 인입 기록: 시점(로그 타임스탬프는 로거가 자동 생성), 엔드포인트, 입력 데이터
     logger.info(f"CALL /classify | text='{text}' | len={len(text)}")
     try:
-        if text == "crash":
-            raise RuntimeError("의도적 장애 추가")
         label, score = check_spam(text)
         # (B) 정상 처리 결과 기록
         logger.info(f"OK /classify | label={label} | score={score}")
