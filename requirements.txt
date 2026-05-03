@@ -4,3 +4,4 @@ python-multipart==0.0.22
 pydantic==2.12.4
 pytest==9.0.2
 httpx==0.28.1
+requests
