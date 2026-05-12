@@ -1,8 +1,10 @@
 name: Docker Verify
 on:
-  pull_request:
-  push:
-    branches: ['main']
+  workflow_run:
+    workflows: ["CI"]
+    types:
+      -completed
+      
 jobs:
   docker-verify:
     runs-on: ubuntu-latest
