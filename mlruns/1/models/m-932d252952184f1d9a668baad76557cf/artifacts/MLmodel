@@ -1,0 +1,23 @@
+artifact_path: file:C:/Users/26553/work/Pipeline/1_initial_SpamCheck/mlruns/1/models/m-932d252952184f1d9a668baad76557cf/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.14.3
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+mlflow_version: 3.12.0
+model_id: m-932d252952184f1d9a668baad76557cf
+model_size_bytes: 1420
+model_uuid: m-932d252952184f1d9a668baad76557cf
+prompts: null
+run_id: a86fb2bc0b204ad4a54bbf158b9b34b4
+utc_time_created: '2026-05-14 05:16:04.790880'
